@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="twelve rows">
+        <h2>Lägg till variantdata</h2>
+        <p>Här laddar du upp dina variantfiler. I kolumn ett fyller du i datumet för provet på formen ÅÅÅÅ-MM-DD.
+            Deleterious-fil är filen som exporteras från QCI (?). gVCF-filen är den genomiska VCF-filen som ligger i samma fil som BAM-filen.</p>
+    </div>
+        <table>
+            <tr>
+                <th>Datum</th>
+                <th>DNA-nummer</th>
+                <th>Deleterious-fil</th>
+                <th>gVCF-fil</th>
+            </tr>
+
+            <form action="{{ url_for('submitinfo') }}" method="post" enctype="multipart/form-data">
+
+            {% for field in form if field.name not in ['csrf_token', 'submit'] %}
+
+            {{ loop.cycle('<tr>', '', '', '')|safe }}
+                <td>        
+                        {{ field() }}
+                        {% for error in field.errors %}
+                            <div class="error">{{ error }}</div>
+                        {% endfor %}
+                {{ loop.cycle('', '', '', '</tr>')|safe }}
+                </td>   
+            {% endfor %}
+        </table>
+
+        <div class="one column u-pull-right">{{ form.submit() }}</form></div>
+    </div>
+
+{% endblock %}

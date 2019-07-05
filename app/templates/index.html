@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="twelve columns">
+    <h3>Välkomen till Max Overtime!</h3>
+    <div><p>Max hjälper dig analysera mutationer mellan två eller flera tidpunkter.</p>
+    <p>Börja med att välja hur många tidpunkter du vill analysera:</p></div>
+    </div>
+    </div>
+
+    <div class="row">
+        
+        <form action="{{ url_for('index') }}" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div >
+            <p class="four columns">
+                    {{ form.samplename.label }} {{ form.samplename(size=12) }}<br />
+                    {% for error in form.samplename.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+            </p>
+            </div>
+            <div >
+            <p class="six columns">
+                    {{ form.numberofsamples.label }} {{ form.numberofsamples(size=3) }}<br />
+                    {% for error in form.numberofsamples.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+            </p>
+            </div>
+            <div >        
+            <p class="six columns">{{ form.submit() }}</p>
+            </div>
+
+        </form>
+        <div class="twelve columns"><p>Copyright Viktor Ljungström 2019</p></div>
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

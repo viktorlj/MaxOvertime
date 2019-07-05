@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{plot_info}}
+
+    <div class="row">
+        <div class="twelve rows">
+            <h2>Resultat</h2>
+
+            <p>Här nedan finner du dina resultat. Nedanför grafen finns en länk där du kan ladda ner den fullständiga variantrapporten.</p>
+
+            {{plotly_graph | safe}}
+
+    </div>
+    </div> 
+    
+    <div class="row">
+            <div class="twelve rows">
+
+    <a href="/static/Output/{{ csv_url }}">Ladda ner resultatfil här</a>
+    
+    </div>
+    </div>  
+    <div class="row" style="font-size: 8rem;">
+        <div class="twelve rows" >
+            {% for table in tables %}
+                {{ table|safe }}
+            {% endfor %}
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}

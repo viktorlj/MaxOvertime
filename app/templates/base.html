@@ -1,0 +1,43 @@
+<html>
+
+    <head>
+        {% if title %}
+        <title>{{ title }} - max Overtime</title>
+        {% else %}
+        <title>max overtime</title>
+        {% endif %}
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+        <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+    </head>
+    <body>
+    
+    
+
+    <div class="container" style="top: 10%;">
+        <div class="row" style="margin-bottom: 50px;">
+        <div class="one column"><img src="/static/maxlogga2.png" height="75px"></div>
+        
+        <div class="one column u-pull-right">
+            <h4><a href="{{ url_for('index') }}">Start</a></h4>            
+        </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    
+    
+    </body>
+</html>
