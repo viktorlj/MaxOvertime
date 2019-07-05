@@ -23,9 +23,6 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from wtforms.validators import DataRequired
 import urllib.parse
 
-#plotly.tools.set_credentials_file(username='viktorlj', api_key='ZbZMEzTQSQXWkBSLUzUQ')
-
-
 #Function to read and process deleterious variants file
 def read_var_file(path):
     deleterious_variants = pd.read_csv(path, sep='\t')
